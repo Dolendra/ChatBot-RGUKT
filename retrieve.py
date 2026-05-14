@@ -41,8 +41,8 @@ def retrieve_chunks(query, top_k=3):
 
 
 
-# Load embedding model
-model = SentenceTransformer("all-MiniLM-L6-v2")
+# Load embedding model  all-MiniLM-L6-v2
+model = SentenceTransformer("paraphrase-MiniLM-L3-v2")
 
 # Load stored chunks and embeddings
 with open("embeddings.pkl", "rb") as f:

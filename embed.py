@@ -2,11 +2,11 @@ from sentence_transformers import SentenceTransformer
 import pickle
 from ingest import extract_pages_from_pdf, clean_text
 
-# Load embedding model
-model = SentenceTransformer("all-MiniLM-L6-v2")
+# Load embedding model  all-MiniLM-L6-v2
+model = SentenceTransformer("paraphrase-MiniLM-L3-v2")
 
 
-def chunk_pages(pages, chunk_size=1600, overlap=300):
+def chunk_pages(pages, chunk_size=900, overlap=120):
     """
     pages = [(page_number, page_text), ...]
     """
