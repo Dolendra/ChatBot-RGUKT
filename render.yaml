@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: chatbot-rgukt-api
+    runtime: python
+    buildCommand: >
+      pip install -r requirements.txt &&
+      python embed.py &&
+      python vector_store.py
+    startCommand: uvicorn api_server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false          # means: set this manually in the Render dashboard
+      - key: CORS_ORIGINS
+        sync: false          # set to your Vercel URL after it is deployed
+      - key: PYTHON_VERSION
+        value: "3.11.0"

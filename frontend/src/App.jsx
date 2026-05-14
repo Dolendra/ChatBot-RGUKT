@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { MarkdownMessage } from "./components/MarkdownMessage.jsx";
+// ADD this line right after the existing imports
+const API_BASE = import.meta.env.VITE_API_URL ?? "";
 
 const SUGGESTIONS = [
   "Summarise the main admission requirements.",
@@ -63,7 +65,7 @@ export default function App() {
   );
 
   useEffect(() => {
-    fetch("/api/config")
+    fetch(`${API_BASE}/api/config`)
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => {
         if (!d) return;
@@ -110,7 +112,7 @@ export default function App() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(`${API_BASE}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
