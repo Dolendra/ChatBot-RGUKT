@@ -2,8 +2,14 @@ import os
 import pickle
 import re
 import time
+
+# Keep Render free-tier memory under control (Torch + two MiniLMs OOMs easily on 512MB).
+os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+
 import faiss
-from sentence_transformers import SentenceTransformer, CrossEncoder
+from sentence_transformers import SentenceTransformer
 from bm25 import BM25Retriever
 
 # Keep in sync with embed.py
@@ -28,11 +34,18 @@ if chunks:
 else:
     bm25_index = None
 
+# CrossEncoder roughly doubles RAM; skip on small hosts (set RAG_SKIP_RERANK=1 on Render).
 reranker = None
-try:
-    reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-2-v2")
-except Exception as e:
-    print(f"Warning: Could not load CrossEncoder reranker: {e}. Running with hybrid score fallback.")
+_skip_rerank = os.environ.get("RAG_SKIP_RERANK", "").strip().lower() in {"1", "true", "yes"}
+if not _skip_rerank:
+    try:
+        from sentence_transformers import CrossEncoder
+
+        reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-2-v2")
+    except Exception as e:
+        print(f"Warning: Could not load CrossEncoder reranker: {e}. Running with hybrid score fallback.")
+else:
+    print("RAG_SKIP_RERANK set — using RRF + lexical boost only (no CrossEncoder).")
 
 _CANDIDATE_POOL = 30
 _RRF_KEEP = 25
