@@ -77,16 +77,25 @@ _USER_TIMEOUT = "The request took too long. Please try again."
 _USER_BAD_REQUEST = "Please check your message and try again."
 
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def root():
-    """Browser-friendly landing for the API port (UI runs on Vite :5173)."""
+    """Landing + Render health probes (HEAD must not 405)."""
     return {
         "service": "RGUKT Academic Assistant API",
         "status": "ok",
-        "ui": "http://127.0.0.1:5173/",
         "docs": "/docs",
         "health": "/api/health",
         "chat": "POST /api/chat",
+    }
+
+
+@app.api_route("/api/health", methods=["GET", "HEAD"])
+def health():
+    index_ok = os.path.exists("faiss_index.index") and os.path.exists("embeddings.pkl")
+    return {
+        "ok": True,
+        "groq_key_present": groq_key_configured(),
+        "index_present": index_ok,
     }
 
 
@@ -99,16 +108,6 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 @app.get("/api/config", response_model=AppConfigResponse)
 def get_app_config():
     return AppConfigResponse(app_title=get_app_title(), app_subtitle=get_app_subtitle())
-
-
-@app.get("/api/health")
-def health():
-    index_ok = os.path.exists("faiss_index.index") and os.path.exists("embeddings.pkl")
-    return {
-        "ok": True,
-        "groq_key_present": groq_key_configured(),
-        "index_present": index_ok,
-    }
 
 
 @app.get("/api/evaluate")

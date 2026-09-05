@@ -1,29 +1,10 @@
-# pdfplumber>=0.11.0
-# sentence-transformers>=2.2.0
-# faiss-cpu>=1.7.4
-# groq>=0.4.0
-# numpy>=1.24.0
-# python-dotenv>=1.0.0
-# fastapi>=0.115.0
-# uvicorn[standard]>=0.32.0
-
-# pdfplumber>=0.11.0
-# sentence-transformers==2.7.0
-# transformers==4.41.2
-# faiss-cpu>=1.7.4
-# groq>=0.4.0
-# numpy>=1.24.0
-# python-dotenv>=1.0.0
-# fastapi>=0.115.0
-# uvicorn[standard]>=0.32.0
-
-
+# torch 2.2.2+cpu is built against NumPy 1.x; NumPy 2 causes _ARRAY_API failures on Render.
 pdfplumber>=0.11.0
 sentence-transformers==2.7.0
 transformers==4.41.2
 faiss-cpu>=1.7.4
 groq>=0.4.0
-numpy>=1.24.0
+numpy>=1.24.0,<2
 python-dotenv>=1.0.0
 fastapi>=0.115.0
 uvicorn[standard]>=0.32.0
