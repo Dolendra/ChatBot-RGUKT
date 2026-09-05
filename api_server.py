@@ -30,7 +30,10 @@ ensure_dotenv()
 
 app = FastAPI(title="RGUKT Academic Assistant API", version="1.1.0")
 
-_origins = os.environ.get("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",")
+_origins = os.environ.get(
+    "CORS_ORIGINS",
+    "http://localhost:5173,http://127.0.0.1:5173,https://chatbot-rgukt.vercel.app",
+).split(",")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[o.strip() for o in _origins if o.strip()],
