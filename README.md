@@ -1,151 +1,106 @@
-# Organisation RAG Chatbot
+# RGUKT Academic RAG Chatbot
 
-A small **Retrieval-Augmented Generation (RAG)** assistant that answers questions **only from your own PDF documents**, with **page-level citations**. It runs on your machine for indexing; answers use the **Groq** cloud API for the language model.
+A grounded **Retrieval-Augmented Generation** assistant for RGUKT academic regulations. It answers **only from indexed PDFs**, with **page-level citations**, a **confidence gate**, and **answer verification**.
 
-If you have never used Python or APIs before, follow the steps in order under [Quick start](#quick-start).
-
----
-
-## What this is (in plain language)
-
-1. **You** put internal PDFs (handbooks, policies, FAQs) in the `data/` folder.
-2. **The program** reads the PDFs, splits them into overlapping text chunks, and turns each chunk into a **vector** (a list of numbers that captures meaning).
-3. **When someone asks a question**, the program finds the chunks whose vectors are closest to the question’s vector (**semantic search**).
-4. **Those chunks** are sent to a **large language model (LLM)** with strict instructions: answer **only** from that text, cite sources, and say **“I don’t know”** if the text does not contain the answer.
-
-So the chatbot is **grounded in your documents**, not in general internet knowledge.
+**Status:** RAG core and verifier are **frozen**. Quality is measured against a **19-question benchmark** (`data/baseline_final.json`). Prefer UX, packaging, and deployment over further retrieval tuning.
 
 ---
 
-## High-level architecture (for your organisation)
+## Architecture
 
-| Stage | What happens | Main file |
-|--------|----------------|-----------|
-| **Ingest** | PDF → text per page, light cleaning | `ingest.py` |
-| **Embed** | Pages → chunks → embeddings → `embeddings.pkl` | `embed.py` |
-| **Index** | Embeddings → FAISS vector index on disk | `vector_store.py` |
-| **Retrieve** | Question → embedding → top similar chunks | `retrieve.py` |
-| **Answer** | Chunks + question → Groq LLM → cited answer | `chat.py` |
-| **Web API + UI** | Browser → FastAPI → same RAG flow → structured JSON | `api_server.py`, `frontend/` |
+Embeddings and search are **local**. Groq is used only as the **chat LLM** (draft generation, verification, and occasional follow-up query rewrite)—**not** as the embedding model.
 
-**Data flow (one line):**  
-`PDF` → `chunks + vectors` → `FAISS index` → `retrieve top-k` → `LLM with context` → `answer`.
+```text
+PDF
+ ↓  ingest.py          structure-aware extract (pages, section headings)
+ ↓  embed.py           pack blocks → paraphrase-MiniLM-L3-v2 vectors
+ ↓  vector_store.py    FAISS IndexFlatL2
+ ↓
+User question
+ ↓  chat.py            optional Groq rewrite (short / follow-up only)
+ ↓  retrieve.py        local intent expand (requirement vs consequence)
+ ↓                     FAISS top-30  +  BM25 top-30
+ ↓                     RRF merge → keep 25
+ ↓                     CrossEncoder ms-marco-MiniLM-L-2-v2
+ ↓                     lexical / number / section boost
+ ↓                     ≤1 chunk per (document, page)
+ ↓  chat.py            confidence gate → abstain or draft via Groq
+ ↓  verify.py          PASS / REVISE / FAIL (enabled by default)
+ ↓  api_server.py      FastAPI JSON
+ ↓  frontend/          React + Vite UI (citations, chat history)
+```
 
-**Typical roles**
+| Component | Model / tech | Role |
+| --- | --- | --- |
+| Embedding | `paraphrase-MiniLM-L3-v2` | Document & query vectors |
+| Dense index | FAISS (`faiss_index.index`) | Semantic nearest neighbors |
+| Sparse | BM25 (`bm25.py`) | Exact terms / numbers |
+| Fusion | Reciprocal Rank Fusion | Merge dense + sparse |
+| Rerank | `cross-encoder/ms-marco-MiniLM-L-2-v2` | Pairwise relevance |
+| Generation / verify | Groq chat (`GROQ_MODEL`) | Draft + claim check |
 
-- **Content owner:** Places or updates PDFs in `data/`, then re-runs embed + index when documents change.
-- **IT / security:** Manages API keys, who can run the chatbot, and where PDFs may live (this repo does not include auth or multi-user hosting; those would be added for a production internal deployment).
+---
 
-**What this project does *not* include (yet)**
+## Frozen quality baseline
 
-- No Teams/Slack integration (browser UI + local API only).
-- No automatic “live” sync when a PDF changes (re-run `embed.py` and `vector_store.py` after updates).
-- No user login or audit log (add those if you expose it beyond a trusted machine).
+Source: `data/baseline_final.json` (19 cases, page/section/keyword evidence; chunk IDs ignored).
+
+| Metric | Value |
+| --- | ---: |
+| Recall@1 / @3 / @5 | **94.7%** / **100%** / **100%** |
+| MRR / nDCG@5 | **96.5%** / **96.8%** |
+| Faithfulness / Correctness | **82.1%** / **85.3%** |
+| Citation valid ID / grounded | **100%** / **~89%** |
+| OOD refusal / false refusal | **100%** / **0%** |
+| Avg latency | **~20.6 s** (verify ~60%, generation ~37%, retrieval &lt;3%) |
+
+Precision@5 (~44%) is left alone on purpose: the product returns a small `top_k` and ranks the right page first.
+
+Latency detail: `data/LATENCY_PROFILE.md`. Smoke results: `data/SMOKE_TEST.md`.
 
 ---
 
 ## Quick start
 
-### 1. Prerequisites
+### Prerequisites
 
-- **Python 3.10+** installed.
-- A **Groq** account and API key: [Groq Console – API keys](https://console.groq.com/keys).
+- Python **3.10+**
+- Node.js **18+** (for the UI)
+- [Groq API key](https://console.groq.com/keys)
 
-### 2. Clone or copy this project
-
-Open a terminal in the project folder (the same folder as this `README.md`).
-
-### 3. Create a virtual environment (recommended)
-
-**Windows (PowerShell):**
+### Setup
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-```
 
-**macOS / Linux:**
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-### 4. Configure the API key
-
-Copy the example env file and edit it:
-
-```powershell
 copy .env.example .env
+# Set GROQ_API_KEY=... and a model id that exists on your Groq account
 ```
 
-Open `.env` in an editor and set:
+**Important:** `GROQ_MODEL` must be a model **available on your account**. Defaults in code may 404; this project was smoke-tested with `qwen/qwen3.8-27b`. Empty or hanging responses from some `gpt-oss` ids are **config failures**, not RAG bugs.
 
-```env
-GROQ_API_KEY=your_key_here
-```
+### Index (once, or after PDF / chunking changes)
 
-The chat script loads `.env` automatically (`python-dotenv`).
-
-### 5. Add your PDF
-
-Put at least one PDF under `data/`. By default the scripts expect:
-
-`data/Academic_Regulations_Hand_Book.pdf`
-
-To use another file:
-
-- **Embed step:** pass the path as the first argument, or set `RAG_PDF_PATH` in the environment.
-
-Examples:
-
-```powershell
-$env:RAG_PDF_PATH = "data/Your_Handbook.pdf"
-python embed.py
-```
-
-```powershell
-python embed.py "data/Your_Handbook.pdf"
-```
-
-### 6. Build embeddings and the search index
-
-Run **in order**:
+Put PDFs under `data/` (default handbook path is used by `embed.py`).
 
 ```powershell
 python embed.py
 python vector_store.py
 ```
 
-This creates:
+Creates `embeddings.pkl` and `faiss_index.index`. Do **not** re-index casually—refresh `baseline_final.json` after intentional re-ingest.
 
-- `embeddings.pkl` — chunks + their vectors  
-- `faiss_index.index` — fast similarity search structure  
+### Run API + UI
 
-Both files are listed in `.gitignore` so they are not committed by mistake (they can be large and may contain sensitive text).
-
-### 7. Chat
+**Terminal A (project root, venv active):**
 
 ```powershell
-python chat.py
+uvicorn api_server:app --host 127.0.0.1 --port 8000
 ```
 
-Type questions; type `exit` to quit.
-
-### 8. Web chat (Vite + React)
-
-Use this for a **ChatGPT-style** interface: markdown answers, typing indicator, and expandable “retrieved context” per reply.
-
-**Terminal A — API (from project root, venv active):**
-
-```powershell
-pip install -r requirements.txt
-uvicorn api_server:app --reload --host 127.0.0.1 --port 8000
-```
-
-**Terminal B — frontend:**
+**Terminal B:**
 
 ```powershell
 cd frontend
@@ -153,75 +108,105 @@ npm install
 npm run dev
 ```
 
-Open **http://localhost:5173**. The dev server proxies `/api` to the backend on port **8000**.
+Open **http://127.0.0.1:5173** (chat UI). Port **8000** is the API only (`GET /` explains that). Vite proxies `/api` → `:8000`.
 
-If the page cannot reach the API, confirm `uvicorn` is running and that `embeddings.pkl` and `faiss_index.index` exist (same as CLI chat).
-
-Optional: set `CORS_ORIGINS` in `.env` (comma-separated URLs) if you host the UI on another origin.
+CLI chat (optional): `python chat.py`
 
 ---
 
-## Optional checks
-
-**Test PDF extraction only**
+## Evaluation & smoke tests
 
 ```powershell
-python ingest.py
+# Full 19-question suite (uses Groq quota; slow)
+python evaluate_rag.py
+
+# Live product smoke against running API
+python scripts/final_smoke.py
+
+# Offline / API hardening checks
+python scripts/hardening_smoke.py --offline
+python scripts/hardening_smoke.py
+
+# Retrieval debug for one query
+python diagnose_retrieval.py "What is the minimum attendance requirement?"
 ```
 
-Or with a specific PDF:
-
-```powershell
-python ingest.py "data/Your_Handbook.pdf"
-```
-
-**Test retrieval only (no LLM)**
-
-```powershell
-python retrieve.py
-```
+Regression to keep green: *“What is the minimum attendance requirement?” → **75%*** with citations on attendance pages.
 
 ---
 
-## Configuration summary
+## Configuration
 
-| Variable / argument | Purpose |
-|---------------------|---------|
-| `GROQ_API_KEY` in `.env` | Required for `chat.py` and `api_server.py` |
-| `GROQ_MODEL`, `GROQ_MAX_TOKENS` in `.env` | Optional overrides for the Groq model and max reply length |
-| `RAG_PDF_PATH` or `python embed.py <path>` | Which PDF to index |
-| `retrieve_chunks` `top_k` (CLI) / request body (web) | How many chunks to send to the model |
-| Groq model | Defaults in `chat.py`; override with `GROQ_MODEL` — see [Groq models](https://console.groq.com/docs/models) |
+| Variable | Purpose |
+| --- | --- |
+| `GROQ_API_KEY` | Required for chat / API |
+| `GROQ_MODEL` | Groq chat model id (must exist on account) |
+| `GROQ_MAX_TOKENS` | Max generation tokens |
+| `RAG_VERIFY` | `1` (default) enables answer verification |
+| `RAG_SIMILARITY_THRESHOLD` | Confidence gate (default `-5.0`) |
+| `RAG_CONTEXT_CHARS_PER_CHUNK` | Context trim per chunk |
+| `RAG_HISTORY_MAX_MESSAGES` | History window for rewrite |
+| `CORS_ORIGINS` | Comma-separated UI origins (defaults to local Vite) |
+| `APP_TITLE` / `APP_SUBTITLE` | UI branding via `/api/config` |
+| `RAG_PDF_PATH` | PDF path for ingest/embed |
 
 ---
 
-## Updating documents after policies change
+## Frontend features
 
-1. Replace or add PDFs under `data/`.
-2. Run `python embed.py` (and point it at the right PDF if needed).
-3. Run `python vector_store.py` again to rebuild `faiss_index.index`.
+- Multi-chat sidebar (create / rename / delete)
+- `localStorage` persistence with `schemaVersion` + sanitization
+- Expandable sources; clickable `[Source n]` → highlight source card
+- Staged loading UI: Searching → Generating → Verifying (timer-based UX; backend is request/response)
+
+---
+
+## Project layout
+
+| Path | Role |
+| --- | --- |
+| `ingest.py` | PDF extract + section structure |
+| `embed.py` | Chunk packing + embeddings |
+| `vector_store.py` | Build FAISS index |
+| `bm25.py` | Sparse retrieval |
+| `retrieve.py` | Hybrid retrieve + rerank + dedupe |
+| `chat.py` | Rewrite, gate, generate, cite |
+| `verify.py` | Claim-level PASS / REVISE / FAIL |
+| `api_server.py` | FastAPI surface |
+| `evaluate_rag.py` | Benchmark harness |
+| `diagnose_retrieval.py` | Rank dump for one query |
+| `scripts/final_smoke.py` | Product smoke |
+| `scripts/hardening_smoke.py` | Validation / error-shape smoke |
+| `data/evaluation_set.json` | 19 labeled cases |
+| `data/baseline_final.json` | Frozen metrics |
+| `frontend/` | React + Vite UI |
+
+---
+
+## Deployment checklist
+
+1. Ship the **frozen** index artifacts (`embeddings.pkl`, `faiss_index.index`) or rebuild them in CI from the same PDFs + `embed.py` / `vector_store.py`.
+2. Set `GROQ_API_KEY` and a **verified** `GROQ_MODEL` (hit `/api/health` and one chat before opening to users).
+3. Set `CORS_ORIGINS` to the real UI origin(s).
+4. Keep `RAG_VERIFY=1` unless you deliberately trade latency for speed.
+5. After deploy: `RAG_API_BASE=https://your-api python scripts/final_smoke.py`
+6. Confirm UI: citation click, refresh persistence, staged loading.
 
 ---
 
 ## Troubleshooting
 
 | Problem | What to try |
-|---------|-------------|
-| `Missing GROQ_API_KEY` | Create `.env` in the project root (same folder as `api_server.py`) or export `GROQ_API_KEY` in the terminal before `uvicorn`. |
-| Groq `401 invalid_api_key` | Key must be valid on [Groq Console](https://console.groq.com/keys). In `.env` use `GROQ_API_KEY=gsk_...` on one line (no spaces around `=`). Save as UTF-8, restart `uvicorn`. Open `http://127.0.0.1:8000/api/health` — `groq_key_present` should be `true`. |
-| File not found for PDF | Check the path under `data/` and `RAG_PDF_PATH` / CLI argument. |
-| Error loading index | Run `embed.py` then `vector_store.py` so both `embeddings.pkl` and `faiss_index.index` exist. |
-| Web UI: network / failed fetch | Start `uvicorn` on port 8000 before `npm run dev`, and keep both terminals open. |
-| First run is slow | The embedding model downloads once; later runs reuse the cache. |
+| --- | --- |
+| `Missing GROQ_API_KEY` / 401 | Fix `.env`; restart uvicorn; check `/api/health` → `groq_key_present` |
+| Model 404 or empty answers | Change `GROQ_MODEL` to an id listed for your Groq account |
+| Stuck on “Verifying…” | Backend still running or model hung; check API logs (UI stages are timers) |
+| Index missing | Run `embed.py` then `vector_store.py` |
+| UI cannot reach API | uvicorn on **8000**, UI on **5173**; both running |
+| Wrong attendance % | Do not “fix” the LLM first—run `diagnose_retrieval.py` (retrieval/chunking issue) |
 
 ---
 
-## Licence and usage
+## Licence
 
-Add your organisation’s licence or usage policy here if you distribute this repo.
-
----
-
-## Summary
-
-This repository is a **minimal internal RAG pipeline**: PDFs → embeddings → FAISS → Groq LLM, with **source citations** and **refusal** when the context does not support an answer. A **React + Vite** UI and **FastAPI** server are included for local demos; add auth and hosting when you move from a prototype to a shared service.
+Add your organisation’s licence or usage policy if you distribute this repo.

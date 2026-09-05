@@ -1,0 +1,1682 @@
+{
+  "timestamp": "2026-09-05 19:30:40",
+  "total_test_cases": 19,
+  "evidence_matching": "page/section/keywords (chunk IDs ignored)",
+  "index_note": "Post attendance-ranking fix + answer verification",
+  "recall_at_1": 94.74,
+  "recall_at_3": 100.0,
+  "recall_at_5": 100.0,
+  "precision_at_1": 94.74,
+  "precision_at_3": 63.16,
+  "precision_at_5": 44.21,
+  "mrr": 96.49,
+  "ndcg_at_5": 96.75,
+  "faithfulness": 82.11,
+  "correctness": 85.26,
+  "keyword_hit_rate": 89.91,
+  "citation_valid_id_rate": 100.0,
+  "citation_grounded_rate": 89.04,
+  "ood_refusal_accuracy": 100.0,
+  "false_refusal_rate": 0.0,
+  "failure_counts": {
+    "low_faithfulness": 5,
+    "low_correctness": 1,
+    "relevant_ranked_too_low": 1,
+    "citation_not_grounded": 1
+  },
+  "verification_decisions": {
+    "PASS": 11,
+    "REVISE": 6,
+    "SKIP_LOW_CONFIDENCE": 2
+  },
+  "avg_latencies": {
+    "embedding_ms": 24.99,
+    "faiss_ms": 1.37,
+    "bm25_ms": 16.25,
+    "rrf_ms": 0.11,
+    "rerank_ms": 550.86,
+    "generation_ms": 7555.98,
+    "verify_ms": 12405.02,
+    "total_ms": 20554.84
+  },
+  "results": [
+    {
+      "id": "fee_puc_btech",
+      "question": "What is the fee for PUC and B.Tech programmes?",
+      "category": "Numerical",
+      "expected_pages": [
+        5
+      ],
+      "expected_sections": [
+        "SCHEME OF INSTRUCTION AND EXAMINATION"
+      ],
+      "relevance_labels": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.3333,
+      "precision_5": 0.2,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 5.0,
+      "correctness": 5.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 46.52,
+        "faiss_ms": 0.99,
+        "bm25_ms": 16.11,
+        "rrf_ms": 0.0,
+        "rerank_ms": 714.37,
+        "total_retrieve_ms": 779.0,
+        "top_score": 9.1175,
+        "low_confidence": false,
+        "expanded_query": "What is the fee for PUC and B.Tech programmes?",
+        "search_query": "What is the fee for PUC and B.Tech programmes?",
+        "generation_ms": 2229.29,
+        "verify_ms": 2153.49,
+        "total_ms": 5162.78,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "PASS",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 1
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "PASS",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 1
+      },
+      "generated_answer": "The fee is Rs 36,000 for the PUC programme and Rs 40,000 for the B.Tech programme (excluding any additional miscellaneous fees)[Source 1].",
+      "retrieved_pages": [
+        5,
+        4,
+        1,
+        2,
+        12
+      ],
+      "retrieved_sections": [
+        "SCHEME OF INSTRUCTION AND EXAMINATION",
+        "RULES AND REGULATIONS",
+        "RULES AND REGULATIONS",
+        "RULES AND REGULATIONS",
+        "AWARD OF DEGREE"
+      ],
+      "search_query": "What is the fee for PUC and B.Tech programmes?",
+      "top_rerank_score": 9.1175,
+      "low_confidence": false,
+      "failure_tags": []
+    },
+    {
+      "id": "puc_grading_system",
+      "question": "What grading system is used for the PUC program?",
+      "category": "Simple Fact",
+      "expected_pages": [
+        7
+      ],
+      "expected_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "relevance_labels": [
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.6667,
+      "precision_5": 0.4,
+      "mrr": 1.0,
+      "ndcg_5": 0.9197,
+      "faithfulness": 5.0,
+      "correctness": 5.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 30.31,
+        "faiss_ms": 1.0,
+        "bm25_ms": 14.94,
+        "rrf_ms": 0.0,
+        "rerank_ms": 757.68,
+        "total_retrieve_ms": 803.94,
+        "top_score": 10.1721,
+        "low_confidence": false,
+        "expanded_query": "What grading system is used for the PUC program?",
+        "search_query": "What grading system is used for the PUC program?",
+        "generation_ms": 797.66,
+        "verify_ms": 1192.01,
+        "total_ms": 2793.62,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "PASS",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "PASS",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "The PUC program uses an **absolute grading system** to award grades to students[Source 1].",
+      "retrieved_pages": [
+        7,
+        14,
+        9,
+        13,
+        8
+      ],
+      "retrieved_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "RULES OF PROMOTION",
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "search_query": "What grading system is used for the PUC program?",
+      "top_rerank_score": 10.1721,
+      "low_confidence": false,
+      "failure_tags": []
+    },
+    {
+      "id": "photocopy_fee",
+      "question": "What is the fee to apply for a Photocopy of the Theory Answer Script?",
+      "category": "Numerical",
+      "expected_pages": [
+        13
+      ],
+      "expected_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "relevance_labels": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.3333,
+      "precision_5": 0.2,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 5.0,
+      "correctness": 5.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 26.02,
+        "faiss_ms": 2.01,
+        "bm25_ms": 24.01,
+        "rrf_ms": 0.0,
+        "rerank_ms": 606.81,
+        "total_retrieve_ms": 658.86,
+        "top_score": 8.6904,
+        "low_confidence": false,
+        "expanded_query": "What is the fee to apply for a Photocopy of the Theory Answer Script?",
+        "search_query": "What is the fee to apply for a Photocopy of the Theory Answer Script?",
+        "generation_ms": 9369.01,
+        "verify_ms": 8424.37,
+        "total_ms": 18452.23,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "PASS",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "PASS",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "The fee for a Photocopy of the Theory Answer Script is Rs. 1000 per subject [Source 1].",
+      "retrieved_pages": [
+        13,
+        5,
+        12,
+        17,
+        793
+      ],
+      "retrieved_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "SCHEME OF INSTRUCTION AND EXAMINATION",
+        "EXAMINATION FEES",
+        "GENERAL RULES OF EXAMINATIONS",
+        "CS2205 OBJECT"
+      ],
+      "search_query": "What is the fee to apply for a Photocopy of the Theory Answer Script?",
+      "top_rerank_score": 8.6904,
+      "low_confidence": false,
+      "failure_tags": []
+    },
+    {
+      "id": "btech_moderation",
+      "question": "How are B.Tech stream results moderated?",
+      "category": "Regulations",
+      "expected_pages": [
+        9
+      ],
+      "expected_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "relevance_labels": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.6667,
+      "precision_5": 0.4,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 2.0,
+      "correctness": 3.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 24.98,
+        "faiss_ms": 2.04,
+        "bm25_ms": 19.99,
+        "rrf_ms": 1.02,
+        "rerank_ms": 582.5,
+        "total_retrieve_ms": 630.53,
+        "top_score": 7.01,
+        "low_confidence": false,
+        "expanded_query": "How are B.Tech stream results moderated? not less than percentage regular program of study",
+        "search_query": "How are B.Tech stream results moderated?",
+        "generation_ms": 8922.06,
+        "verify_ms": 16712.38,
+        "total_ms": 26265.95,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "PASS",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "PASS",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "B.Tech results that use the Absolute Grading method are moderated by a Committee convened by the Controller of Examinations. The Committee includes the Vice Chancellor/Director (Chairman), Dean (Academics), the Head of the Department, the concerned subject faculty, and the Controller of Examinations as Convener. Moderation is applied only when the percentage of remedial students in a subject exceeds 15%. If the combined percentage of A\u2011grade and Ex\u2011grade students is \u2265 20%, no moderation is done; if it is < 20%, grade moderation is carried out for that subject[Source 1].",
+      "retrieved_pages": [
+        9,
+        7,
+        4,
+        15,
+        14
+      ],
+      "retrieved_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "RULES AND REGULATIONS",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "search_query": "How are B.Tech stream results moderated?",
+      "top_rerank_score": 7.01,
+      "low_confidence": false,
+      "failure_tags": [
+        "low_faithfulness"
+      ]
+    },
+    {
+      "id": "drawing_marks",
+      "question": "What is the maximum marks for evaluation of Drawing courses?",
+      "category": "Numerical",
+      "expected_pages": [
+        6
+      ],
+      "expected_sections": [
+        "SCHEME OF INSTRUCTION AND EXAMINATION"
+      ],
+      "relevance_labels": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.3333,
+      "precision_5": 0.2,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 5.0,
+      "correctness": 5.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 2,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 0.5,
+        "cited_ids": [
+          1,
+          3
+        ]
+      },
+      "latency": {
+        "embedding_ms": 24.07,
+        "faiss_ms": 1.05,
+        "bm25_ms": 17.52,
+        "rrf_ms": 0.0,
+        "rerank_ms": 514.09,
+        "total_retrieve_ms": 556.73,
+        "top_score": 9.8074,
+        "low_confidence": false,
+        "expanded_query": "What is the maximum marks for evaluation of Drawing courses?",
+        "search_query": "What is the maximum marks for evaluation of Drawing courses?",
+        "generation_ms": 13050.94,
+        "verify_ms": 18773.17,
+        "total_ms": 32380.84,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "REVISE",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 1
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "REVISE",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 1
+      },
+      "generated_answer": "The maximum marks for evaluating a Drawing course is 100 marks. [Source 1] [Source 3]",
+      "retrieved_pages": [
+        6,
+        26,
+        5,
+        13,
+        25
+      ],
+      "retrieved_sections": [
+        "SCHEME OF INSTRUCTION AND EXAMINATION",
+        "COURSE ASSESSMENT METHODS",
+        "SCHEME OF INSTRUCTION AND EXAMINATION",
+        "RULES OF PROMOTION",
+        "UNIT-IV"
+      ],
+      "search_query": "What is the maximum marks for evaluation of Drawing courses?",
+      "top_rerank_score": 9.8074,
+      "low_confidence": false,
+      "failure_tags": []
+    },
+    {
+      "id": "cgpa_distinction",
+      "question": "What CGPA range is required for a First Class with Distinction?",
+      "category": "Numerical",
+      "expected_pages": [
+        11
+      ],
+      "expected_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "relevance_labels": [
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 1.0,
+      "precision_5": 0.6,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 5.0,
+      "correctness": 2.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 25.58,
+        "faiss_ms": 2.0,
+        "bm25_ms": 25.99,
+        "rrf_ms": 0.0,
+        "rerank_ms": 725.83,
+        "total_retrieve_ms": 779.39,
+        "top_score": 2.8372,
+        "low_confidence": false,
+        "expanded_query": "What CGPA range is required for a First Class with Distinction? not less than percentage regular program of study",
+        "search_query": "What CGPA range is required for a First Class with Distinction?",
+        "generation_ms": 9500.76,
+        "verify_ms": 5124.36,
+        "total_ms": 15405.51,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "PASS",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "PASS",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "Distinction is awarded for a CGPA \u2265 8.00, while First Class is awarded for a CGPA from 7.00 up to but not including 8.00 [Source 1].",
+      "retrieved_pages": [
+        11,
+        8,
+        14,
+        3,
+        4
+      ],
+      "retrieved_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "RULES AND REGULATIONS"
+      ],
+      "search_query": "What CGPA range is required for a First Class with Distinction?",
+      "top_rerank_score": 2.8372,
+      "low_confidence": false,
+      "failure_tags": [
+        "low_correctness"
+      ]
+    },
+    {
+      "id": "puc_promotion",
+      "question": "What are the rules of promotion for PUC?",
+      "category": "Multi-section",
+      "expected_pages": [
+        13,
+        14
+      ],
+      "expected_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "relevance_labels": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 1.0,
+      "precision_5": 0.8,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 5.0,
+      "correctness": 3.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 5,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1,
+          1,
+          2,
+          2,
+          3
+        ]
+      },
+      "latency": {
+        "embedding_ms": 24.09,
+        "faiss_ms": 1.0,
+        "bm25_ms": 18.02,
+        "rrf_ms": 0.0,
+        "rerank_ms": 725.25,
+        "total_retrieve_ms": 768.36,
+        "top_score": 9.7666,
+        "low_confidence": false,
+        "expanded_query": "What are the rules of promotion for PUC?",
+        "search_query": "What are the rules of promotion for PUC?",
+        "generation_ms": 10714.53,
+        "verify_ms": 27482.91,
+        "total_ms": 38965.8,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "REVISE",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "REVISE",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "- A student must have a CGPA of 6.00 or higher by the end of the 4th semester of the PUC program [Source 1]. \n- The student must have passed **all** subjects from the 1st through the 4th semester; any backlog disqualifies promotion [Source 1]. \n- The PUC program must be completed within a maximum of **3 years** to be eligible for promotion into the 4\u2011year B.Tech programme [Source 2]. \n- If a student fails the promotion criteria but satisfies the PUC pass requirements, he/she may exit the PUC programme after **up to 4 years** from admission, provided all courses are passed [Source 2]. \n- Students with remedial backlog(s) in PUC cannot be promoted into the engineering stream, and no provisional or original certificate is issued while a backlog remains [Source 3].",
+      "retrieved_pages": [
+        13,
+        14,
+        17,
+        16,
+        1
+      ],
+      "retrieved_sections": [
+        "RULES OF PROMOTION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "RULES AND REGULATIONS"
+      ],
+      "search_query": "What are the rules of promotion for PUC?",
+      "top_rerank_score": 9.7666,
+      "low_confidence": false,
+      "failure_tags": []
+    },
+    {
+      "id": "attendance_consequence",
+      "question": "What happens if a student does not have requisite attendance in PUC?",
+      "category": "Regulations",
+      "expected_pages": [
+        4
+      ],
+      "expected_sections": [
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "RULES AND REGULATIONS"
+      ],
+      "relevance_labels": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.3333,
+      "precision_5": 0.2,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 2.0,
+      "correctness": 3.0,
+      "keyword_hit": 0.5,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 29.61,
+        "faiss_ms": 1.02,
+        "bm25_ms": 19.97,
+        "rrf_ms": 0.0,
+        "rerank_ms": 565.64,
+        "total_retrieve_ms": 616.24,
+        "top_score": 8.294,
+        "low_confidence": false,
+        "expanded_query": "What happens if a student does not have requisite attendance in PUC? readmission lose admission below requisite attendance",
+        "search_query": "What happens if a student does not have requisite attendance in PUC?",
+        "generation_ms": 10442.77,
+        "verify_ms": 12566.25,
+        "total_ms": 23625.26,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "PASS",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "PASS",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "If a student admitted to the first year of PUC does not meet the minimum 40% attendance, the admission is cancelled and the student must leave the university, receiving only their SSC certificates [Source 1].",
+      "retrieved_pages": [
+        4,
+        13,
+        17,
+        3,
+        14
+      ],
+      "retrieved_sections": [
+        "RULES AND REGULATIONS",
+        "RULES OF PROMOTION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "search_query": "What happens if a student does not have requisite attendance in PUC?",
+      "top_rerank_score": 8.294,
+      "low_confidence": false,
+      "failure_tags": [
+        "low_faithfulness"
+      ]
+    },
+    {
+      "id": "integrated_programme_length",
+      "question": "How long is the integrated programme at RGUKT?",
+      "category": "Simple Fact",
+      "expected_pages": [
+        1
+      ],
+      "expected_sections": [
+        "RULES AND REGULATIONS"
+      ],
+      "relevance_labels": [
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "recall_1": 0.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 0.0,
+      "precision_3": 0.3333,
+      "precision_5": 0.4,
+      "mrr": 0.3333,
+      "ndcg_5": 0.5438,
+      "faithfulness": 5.0,
+      "correctness": 4.0,
+      "keyword_hit": 0.25,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 0.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 23.54,
+        "faiss_ms": 1.0,
+        "bm25_ms": 18.55,
+        "rrf_ms": 0.0,
+        "rerank_ms": 513.91,
+        "total_retrieve_ms": 557.0,
+        "top_score": 2.2996,
+        "low_confidence": false,
+        "expanded_query": "How long is the integrated programme at RGUKT? not less than percentage regular program of study",
+        "search_query": "How long is the integrated programme at RGUKT?",
+        "generation_ms": 9271.59,
+        "verify_ms": 12611.78,
+        "total_ms": 22440.37,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "PASS",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "PASS",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "The integrated programme at RGUKT is a 6\u2011year program[Source 1].",
+      "retrieved_pages": [
+        12,
+        3,
+        1,
+        16,
+        4
+      ],
+      "retrieved_sections": [
+        "AWARD OF DEGREE",
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "ADMISSION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "RULES AND REGULATIONS"
+      ],
+      "search_query": "How long is the integrated programme at RGUKT?",
+      "top_rerank_score": 2.2996,
+      "low_confidence": false,
+      "failure_tags": [
+        "relevant_ranked_too_low",
+        "citation_not_grounded"
+      ]
+    },
+    {
+      "id": "revaluation",
+      "question": "Can a student apply for revaluation of exam scripts?",
+      "category": "Regulations",
+      "expected_pages": [
+        12,
+        13
+      ],
+      "expected_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "relevance_labels": [
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 1.0,
+      "precision_5": 0.6,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 3.0,
+      "correctness": 5.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 3,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          2,
+          3,
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 32.54,
+        "faiss_ms": 1.0,
+        "bm25_ms": 19.02,
+        "rrf_ms": 0.0,
+        "rerank_ms": 542.42,
+        "total_retrieve_ms": 594.98,
+        "top_score": 7.1327,
+        "low_confidence": false,
+        "expanded_query": "Can a student apply for revaluation of exam scripts?",
+        "search_query": "Can a student apply for revaluation of exam scripts?",
+        "generation_ms": 9422.09,
+        "verify_ms": 24588.07,
+        "total_ms": 34605.13,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "REVISE",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "REVISE",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "Yes. A student may apply for revaluation of answer scripts by submitting a plain\u2011paper application to the Director, clearly stating the subjects for revaluation, and attaching a demand draft/bank challan of Rs 100 per subject. The application must be filed within 15 days of the result declaration [Source 2]. The revaluation fee is Rs 100 per subject as listed in the examination\u2011fees schedule [Source 3]. A photocopy of the theory answer script can be obtained separately for Rs 1,000 per subject and is not required before applying for revaluation [Source 1].",
+      "retrieved_pages": [
+        13,
+        11,
+        12,
+        17,
+        4
+      ],
+      "retrieved_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "EXAMINATION FEES",
+        "GENERAL RULES OF EXAMINATIONS",
+        "GROUNDS AND TAKING RE-ADMISSION"
+      ],
+      "search_query": "Can a student apply for revaluation of exam scripts?",
+      "top_rerank_score": 7.1327,
+      "low_confidence": false,
+      "failure_tags": []
+    },
+    {
+      "id": "ph_pass_marks",
+      "question": "Is there any reduction in pass marks for PH students?",
+      "category": "Regulations",
+      "expected_pages": [
+        12
+      ],
+      "expected_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "relevance_labels": [
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.6667,
+      "precision_5": 0.4,
+      "mrr": 1.0,
+      "ndcg_5": 0.9197,
+      "faithfulness": 2.0,
+      "correctness": 5.0,
+      "keyword_hit": 0.6667,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 23.2,
+        "faiss_ms": 2.01,
+        "bm25_ms": 17.05,
+        "rrf_ms": 0.0,
+        "rerank_ms": 528.78,
+        "total_retrieve_ms": 571.03,
+        "top_score": 7.2234,
+        "low_confidence": false,
+        "expanded_query": "Is there any reduction in pass marks for PH students?",
+        "search_query": "Is there any reduction in pass marks for PH students?",
+        "generation_ms": 9327.98,
+        "verify_ms": 20849.51,
+        "total_ms": 30748.52,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "REVISE",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 1
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "REVISE",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 1
+      },
+      "generated_answer": "Yes. PH students (hearing\u2011impaired, orthopedically handicapped, visually challenged, deaf and dumb) receive a 10% concession over the standard pass marks[Source 1].",
+      "retrieved_pages": [
+        12,
+        13,
+        14,
+        7,
+        9
+      ],
+      "retrieved_sections": [
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "RULES OF PROMOTION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "search_query": "Is there any reduction in pass marks for PH students?",
+      "top_rerank_score": 7.2234,
+      "low_confidence": false,
+      "failure_tags": [
+        "low_faithfulness"
+      ]
+    },
+    {
+      "id": "ood_world_cup",
+      "question": "Who won the 2026 FIFA World Cup?",
+      "category": "Out-of-Domain",
+      "expected_pages": [],
+      "expected_sections": [],
+      "relevance_labels": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 1.0,
+      "precision_5": 1.0,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 5.0,
+      "correctness": 5.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 0,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": []
+      },
+      "latency": {
+        "embedding_ms": 21.73,
+        "faiss_ms": 1.01,
+        "bm25_ms": 9.0,
+        "rrf_ms": 0.0,
+        "rerank_ms": 471.48,
+        "total_retrieve_ms": 503.22,
+        "top_score": -11.3194,
+        "low_confidence": true,
+        "expanded_query": "Who won the 2026 FIFA World Cup?",
+        "search_query": "Who won the 2026 FIFA World Cup?",
+        "generation_ms": 0.0,
+        "verify_ms": 0.0,
+        "total_ms": 503.22,
+        "verification": {
+          "verification_enabled": false,
+          "decision": "SKIP_LOW_CONFIDENCE"
+        }
+      },
+      "verification": {
+        "verification_enabled": false,
+        "decision": "SKIP_LOW_CONFIDENCE"
+      },
+      "generated_answer": "I couldn't find any relevant information in the RGUKT documents.",
+      "retrieved_pages": [],
+      "retrieved_sections": [],
+      "search_query": "Who won the 2026 FIFA World Cup?",
+      "top_rerank_score": -11.3194,
+      "low_confidence": true,
+      "failure_tags": []
+    },
+    {
+      "id": "ood_france_capital",
+      "question": "What is the capital city of France?",
+      "category": "Out-of-Domain",
+      "expected_pages": [],
+      "expected_sections": [],
+      "relevance_labels": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 1.0,
+      "precision_5": 1.0,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 5.0,
+      "correctness": 5.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 0,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": []
+      },
+      "latency": {
+        "embedding_ms": 22.95,
+        "faiss_ms": 3.0,
+        "bm25_ms": 10.52,
+        "rrf_ms": 0.0,
+        "rerank_ms": 520.86,
+        "total_retrieve_ms": 557.32,
+        "top_score": -9.8457,
+        "low_confidence": true,
+        "expanded_query": "What is the capital city of France?",
+        "search_query": "What is the capital city of France?",
+        "generation_ms": 0.0,
+        "verify_ms": 0.0,
+        "total_ms": 557.32,
+        "verification": {
+          "verification_enabled": false,
+          "decision": "SKIP_LOW_CONFIDENCE"
+        }
+      },
+      "verification": {
+        "verification_enabled": false,
+        "decision": "SKIP_LOW_CONFIDENCE"
+      },
+      "generated_answer": "I couldn't find any relevant information in the RGUKT documents.",
+      "retrieved_pages": [],
+      "retrieved_sections": [],
+      "search_query": "What is the capital city of France?",
+      "top_rerank_score": -9.8457,
+      "low_confidence": true,
+      "failure_tags": []
+    },
+    {
+      "id": "min_attendance",
+      "question": "What is the minimum attendance requirement for appearing in examinations?",
+      "category": "Numerical",
+      "expected_pages": [
+        3
+      ],
+      "expected_sections": [
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "RULES AND REGULATIONS"
+      ],
+      "relevance_labels": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.6667,
+      "precision_5": 0.4,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 5.0,
+      "correctness": 5.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 23.0,
+        "faiss_ms": 1.01,
+        "bm25_ms": 19.0,
+        "rrf_ms": 0.0,
+        "rerank_ms": 530.26,
+        "total_retrieve_ms": 573.27,
+        "top_score": 8.7913,
+        "low_confidence": false,
+        "expanded_query": "What is the minimum attendance requirement for appearing in examinations? not less than percentage regular program of study",
+        "search_query": "What is the minimum attendance requirement for appearing in examinations?",
+        "generation_ms": 4114.26,
+        "verify_ms": 24827.01,
+        "total_ms": 29514.54,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "REVISE",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 1
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "REVISE",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 1
+      },
+      "generated_answer": "The minimum attendance required to be eligible to appear for university examinations is at least 75% of the scheduled classes [Source 1].",
+      "retrieved_pages": [
+        3,
+        4,
+        7,
+        17,
+        12
+      ],
+      "retrieved_sections": [
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "RULES AND REGULATIONS",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GENERAL RULES OF EXAMINATIONS",
+        "EXAMINATION FEES"
+      ],
+      "search_query": "What is the minimum attendance requirement for appearing in examinations?",
+      "top_rerank_score": 8.7913,
+      "low_confidence": false,
+      "failure_tags": []
+    },
+    {
+      "id": "attendance_how_much",
+      "question": "How much attendance is required?",
+      "category": "Numerical",
+      "expected_pages": [
+        3
+      ],
+      "expected_sections": [
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "RULES AND REGULATIONS"
+      ],
+      "relevance_labels": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.6667,
+      "precision_5": 0.4,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 5.0,
+      "correctness": 5.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 6.98,
+        "faiss_ms": 0.0,
+        "bm25_ms": 5.0,
+        "rrf_ms": 0.0,
+        "rerank_ms": 100.52,
+        "total_retrieve_ms": 112.5,
+        "top_score": 9.6069,
+        "low_confidence": false,
+        "expanded_query": "How much attendance is required? not less than percentage regular program of study",
+        "search_query": "How much attendance is required?",
+        "generation_ms": 9128.8,
+        "verify_ms": 5083.22,
+        "total_ms": 14324.53,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "PASS",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "PASS",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "A \u201cregular program of study\u201d requires students to maintain at least 75% attendance [Source 1].",
+      "retrieved_pages": [
+        3,
+        4,
+        15,
+        17,
+        7
+      ],
+      "retrieved_sections": [
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "RULES AND REGULATIONS",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GENERAL RULES OF EXAMINATIONS",
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "search_query": "How much attendance is required?",
+      "top_rerank_score": 9.6069,
+      "low_confidence": false,
+      "failure_tags": []
+    },
+    {
+      "id": "attendance_percentage_maintain",
+      "question": "What percentage attendance must a student maintain?",
+      "category": "Numerical",
+      "expected_pages": [
+        3
+      ],
+      "expected_sections": [
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "RULES AND REGULATIONS"
+      ],
+      "relevance_labels": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.6667,
+      "precision_5": 0.4,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 5.0,
+      "correctness": 5.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 6.53,
+        "faiss_ms": 1.0,
+        "bm25_ms": 8.0,
+        "rrf_ms": 0.0,
+        "rerank_ms": 100.55,
+        "total_retrieve_ms": 116.09,
+        "top_score": 7.1091,
+        "low_confidence": false,
+        "expanded_query": "What percentage attendance must a student maintain? not less than percentage regular program of study",
+        "search_query": "What percentage attendance must a student maintain?",
+        "generation_ms": 9359.12,
+        "verify_ms": 22551.88,
+        "total_ms": 32027.09,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "REVISE",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 1
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "REVISE",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 1
+      },
+      "generated_answer": "A student must maintain at least 75% attendance to be considered in a \u201cregular program of study\u201d [Source 1].",
+      "retrieved_pages": [
+        3,
+        4,
+        8,
+        9,
+        7
+      ],
+      "retrieved_sections": [
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "RULES AND REGULATIONS",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "search_query": "What percentage attendance must a student maintain?",
+      "top_rerank_score": 7.1091,
+      "low_confidence": false,
+      "failure_tags": []
+    },
+    {
+      "id": "attendance_below_required",
+      "question": "What happens if attendance falls below the required level?",
+      "category": "Regulations",
+      "expected_pages": [
+        4
+      ],
+      "expected_sections": [
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "RULES AND REGULATIONS"
+      ],
+      "relevance_labels": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.6667,
+      "precision_5": 0.4,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 2.0,
+      "correctness": 3.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 4,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 0.75,
+        "cited_ids": [
+          2,
+          1,
+          1,
+          3
+        ]
+      },
+      "latency": {
+        "embedding_ms": 32.97,
+        "faiss_ms": 2.0,
+        "bm25_ms": 15.0,
+        "rrf_ms": 0.0,
+        "rerank_ms": 551.55,
+        "total_retrieve_ms": 601.52,
+        "top_score": 5.2223,
+        "low_confidence": false,
+        "expanded_query": "What happens if attendance falls below the required level? readmission lose admission below requisite attendance",
+        "search_query": "What happens if attendance falls below the required level?",
+        "generation_ms": 10213.45,
+        "verify_ms": 13799.74,
+        "total_ms": 24615.71,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "PASS",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "PASS",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "If a student does not meet the required attendance, the university treats the case as follows:\n\n* The student is **detained in the same class and barred from appearing for the University Examination** until the attendance requirement is satisfied [Source 2].\n* For first\u2011year PUC or first\u2011year B.Tech students, **attendance below 40% results in loss of admission**, and the student must leave the university with only the SSC (for PUC) or PUC (for B.Tech) certificates [Source 1].\n* If the student\u2019s attendance is **below the required level but still at least 40%**, they may **seek readmission** to the same class in the next academic year after fulfilling the attendance requirement and paying the applicable fee [Source 1].\n* A **shortage of attendance also disqualifies the student from any refund of examination fees** for subsequent exams [Source 3].",
+      "retrieved_pages": [
+        4,
+        3,
+        17,
+        16,
+        7
+      ],
+      "retrieved_sections": [
+        "RULES AND REGULATIONS",
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "GENERAL RULES OF EXAMINATIONS",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GRADING SYSTEM AND AWARD OF DIVISION"
+      ],
+      "search_query": "What happens if attendance falls below the required level?",
+      "top_rerank_score": 5.2223,
+      "low_confidence": false,
+      "failure_tags": [
+        "low_faithfulness"
+      ]
+    },
+    {
+      "id": "attendance_below_40",
+      "question": "What happens when attendance is below 40%?",
+      "category": "Numerical",
+      "expected_pages": [
+        4
+      ],
+      "expected_sections": [
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "RULES AND REGULATIONS"
+      ],
+      "relevance_labels": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.3333,
+      "precision_5": 0.2,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 2.0,
+      "correctness": 3.0,
+      "keyword_hit": 0.6667,
+      "citation": {
+        "cited_count": 3,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 0.6666666666666666,
+        "cited_ids": [
+          1,
+          1,
+          2
+        ]
+      },
+      "latency": {
+        "embedding_ms": 27.13,
+        "faiss_ms": 1.97,
+        "bm25_ms": 13.0,
+        "rrf_ms": 0.99,
+        "rerank_ms": 703.75,
+        "total_retrieve_ms": 746.85,
+        "top_score": 8.4186,
+        "low_confidence": false,
+        "expanded_query": "What happens when attendance is below 40%? readmission lose admission below requisite attendance",
+        "search_query": "What happens when attendance is below 40%?",
+        "generation_ms": 10106.35,
+        "verify_ms": 9754.89,
+        "total_ms": 20608.09,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "PASS",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "PASS",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "If a student\u2019s attendance falls below 40%:\n\n* For students admitted to the first year of PUC, the admission is cancelled and the student must leave the university with only the SSC certificate [Source 1].\n* For students admitted to the first year of a B.Tech program after PUC, the admission to that B.Tech program is cancelled and the student must leave with the PUC certificate [Source 1].\n* In any program, a candidate who does not meet the required attendance is detained in the same class and is not allowed to sit for the university examinations [Source 2].",
+      "retrieved_pages": [
+        4,
+        3,
+        7,
+        17,
+        5
+      ],
+      "retrieved_sections": [
+        "RULES AND REGULATIONS",
+        "RULES AND REGULATIONS OF ATTENDANCE",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "GENERAL RULES OF EXAMINATIONS",
+        "SCHEME OF INSTRUCTION AND EXAMINATION"
+      ],
+      "search_query": "What happens when attendance is below 40%?",
+      "top_rerank_score": 8.4186,
+      "low_confidence": false,
+      "failure_tags": [
+        "low_faithfulness"
+      ]
+    },
+    {
+      "id": "btech_programs",
+      "question": "What B.Tech programs are offered in the university upon completion of PUC?",
+      "category": "Simple Fact",
+      "expected_pages": [
+        2
+      ],
+      "expected_sections": [
+        "RULES AND REGULATIONS"
+      ],
+      "relevance_labels": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "recall_1": 1.0,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "precision_1": 1.0,
+      "precision_3": 0.3333,
+      "precision_5": 0.2,
+      "mrr": 1.0,
+      "ndcg_5": 1.0,
+      "faithfulness": 5.0,
+      "correctness": 5.0,
+      "keyword_hit": 1.0,
+      "citation": {
+        "cited_count": 1,
+        "valid_id_rate": 1.0,
+        "grounded_citation_rate": 1.0,
+        "cited_ids": [
+          1
+        ]
+      },
+      "latency": {
+        "embedding_ms": 23.05,
+        "faiss_ms": 0.99,
+        "bm25_ms": 17.98,
+        "rrf_ms": 0.0,
+        "rerank_ms": 710.08,
+        "total_retrieve_ms": 752.09,
+        "top_score": 8.571,
+        "low_confidence": false,
+        "expanded_query": "What B.Tech programs are offered in the university upon completion of PUC?",
+        "search_query": "What B.Tech programs are offered in the university upon completion of PUC?",
+        "generation_ms": 7592.99,
+        "verify_ms": 9200.33,
+        "total_ms": 17545.41,
+        "verification": {
+          "verification_enabled": true,
+          "decision": "PASS",
+          "unsupported_claims": 0,
+          "missing_points": 0,
+          "number_issues": 0,
+          "citation_issues": 0
+        }
+      },
+      "verification": {
+        "verification_enabled": true,
+        "decision": "PASS",
+        "unsupported_claims": 0,
+        "missing_points": 0,
+        "number_issues": 0,
+        "citation_issues": 0
+      },
+      "generated_answer": "The university offers the following B.Tech programs after completing the PUC:\n\n- Chemical Engineering \n- Civil Engineering \n- Computer Science and Engineering \n- Electrical and Electronics Engineering \n- Electronics and Communications Engineering \n- Mechanical Engineering \n- Metallurgical and Materials Engineering \n\n[Source 1]",
+      "retrieved_pages": [
+        2,
+        12,
+        14,
+        13,
+        4
+      ],
+      "retrieved_sections": [
+        "RULES AND REGULATIONS",
+        "AWARD OF DEGREE",
+        "GRADING SYSTEM AND AWARD OF DIVISION",
+        "RULES OF PROMOTION",
+        "RULES AND REGULATIONS"
+      ],
+      "search_query": "What B.Tech programs are offered in the university upon completion of PUC?",
+      "top_rerank_score": 8.571,
+      "low_confidence": false,
+      "failure_tags": []
+    }
+  ],
+  "label": "baseline_final",
+  "frozen_note": "Frozen post-verification 19-question suite. Re-run interrupted by Groq TPD limit; this is the last complete successful evaluation."
+}

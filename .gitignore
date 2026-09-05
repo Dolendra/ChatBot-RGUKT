@@ -6,3 +6,12 @@ __pycache__/
 *.log
 frontend/node_modules/
 frontend/dist/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.bak
+data/eval_failures.txt
+data/diagnose_*.txt
+data/eval_comparison.txt
+data/evaluation_results_pre_*.json

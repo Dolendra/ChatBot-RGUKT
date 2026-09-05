@@ -1,0 +1,211 @@
+[
+  {
+    "id": "fee_puc_btech",
+    "question": "What is the fee for PUC and B.Tech programmes?",
+    "category": "Numerical",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [5],
+    "relevant_sections": ["SCHEME OF INSTRUCTION AND EXAMINATION"],
+    "evidence_keywords": ["36,000", "40,000"],
+    "reference_answer": "The fee is Rs. 36,000/- for PUC and Rs. 40,000/- for B.Tech programmes.",
+    "expected_keywords": ["36,000", "40,000", "PUC", "B.Tech"]
+  },
+  {
+    "id": "puc_grading_system",
+    "question": "What grading system is used for the PUC program?",
+    "category": "Simple Fact",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [7],
+    "relevant_sections": ["GRADING SYSTEM AND AWARD OF DIVISION"],
+    "evidence_keywords": ["absolute grading"],
+    "reference_answer": "An absolute grading system is used to award grades to students in the PUC program.",
+    "expected_keywords": ["absolute grading", "PUC"]
+  },
+  {
+    "id": "photocopy_fee",
+    "question": "What is the fee to apply for a Photocopy of the Theory Answer Script?",
+    "category": "Numerical",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [13],
+    "relevant_sections": ["GRADING SYSTEM AND AWARD OF DIVISION"],
+    "evidence_keywords": ["Photocopy", "1000"],
+    "reference_answer": "Students can apply for the Photocopy of the Theory Answer Script by paying Rs. 1000/- per subject.",
+    "expected_keywords": ["1000", "Photocopy"]
+  },
+  {
+    "id": "btech_moderation",
+    "question": "How are B.Tech stream results moderated?",
+    "category": "Regulations",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [9],
+    "relevant_sections": ["GRADING SYSTEM AND AWARD OF DIVISION"],
+    "evidence_keywords": ["moderated", "Controller of Examinations"],
+    "reference_answer": "Results are moderated by a Committee convened by the Controller of Examinations, comprising the Vice Chancellor / Director (Chairman), Dean (Academics) (Member), and others.",
+    "expected_keywords": ["moderated", "Committee", "Controller of Examinations"]
+  },
+  {
+    "id": "drawing_marks",
+    "question": "What is the maximum marks for evaluation of Drawing courses?",
+    "category": "Numerical",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [6],
+    "relevant_sections": ["SCHEME OF INSTRUCTION AND EXAMINATION"],
+    "evidence_keywords": ["Drawing", "100"],
+    "reference_answer": "The evaluation of each Drawing course is for a maximum of 100 marks.",
+    "expected_keywords": ["Drawing", "100"]
+  },
+  {
+    "id": "cgpa_distinction",
+    "question": "What CGPA range is required for a First Class with Distinction?",
+    "category": "Numerical",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [11],
+    "relevant_sections": ["GRADING SYSTEM AND AWARD OF DIVISION"],
+    "evidence_keywords": ["Distinction", "8.00", "CGPA"],
+    "reference_answer": "A CGPA of 8.00 and above is required for First Class with Distinction.",
+    "expected_keywords": ["CGPA", "8.00", "Distinction"]
+  },
+  {
+    "id": "puc_promotion",
+    "question": "What are the rules of promotion for PUC?",
+    "category": "Multi-section",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [13, 14],
+    "relevant_sections": ["GRADING SYSTEM AND AWARD OF DIVISION"],
+    "evidence_keywords": ["promotion", "PUC"],
+    "reference_answer": "Promotion rules for PUC require passing minimum credits and meeting backlog limits for promotion between years.",
+    "expected_keywords": ["promotion", "PUC"]
+  },
+  {
+    "id": "attendance_consequence",
+    "question": "What happens if a student does not have requisite attendance in PUC?",
+    "category": "Regulations",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [4],
+    "relevant_sections": ["RULES AND REGULATIONS OF ATTENDANCE", "RULES AND REGULATIONS"],
+    "evidence_keywords": ["readmission", "40%"],
+    "reference_answer": "Students who do not have the requisite attendance must seek readmission in the subsequent year; those with less than 40% attendance will lose their admission.",
+    "expected_keywords": ["readmission", "40%"]
+  },
+  {
+    "id": "integrated_programme_length",
+    "question": "How long is the integrated programme at RGUKT?",
+    "category": "Simple Fact",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [1],
+    "relevant_sections": ["RULES AND REGULATIONS"],
+    "evidence_keywords": ["Six Year", "Integrated", "PUC"],
+    "reference_answer": "It is a Six Year Integrated B.Tech Programme comprising a 2-Year Pre-University Course (PUC) and a 4-Year B.Tech Programme.",
+    "expected_keywords": ["Six Year", "Integrated", "PUC", "B.Tech"]
+  },
+  {
+    "id": "revaluation",
+    "question": "Can a student apply for revaluation of exam scripts?",
+    "category": "Regulations",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [12, 13],
+    "relevant_sections": ["GRADING SYSTEM AND AWARD OF DIVISION"],
+    "evidence_keywords": ["Revaluation"],
+    "reference_answer": "Yes, candidates who desire to apply for Revaluation should apply separately without waiting for the Photocopy of the Answer Script.",
+    "expected_keywords": ["Revaluation"]
+  },
+  {
+    "id": "ph_pass_marks",
+    "question": "Is there any reduction in pass marks for PH students?",
+    "category": "Regulations",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [12],
+    "relevant_sections": ["GRADING SYSTEM AND AWARD OF DIVISION"],
+    "evidence_keywords": ["PH", "pass marks", "reduction"],
+    "reference_answer": "Yes, based on prevailing Government orders, there is a reduction in pass marks for PH (Physically Handicapped) students.",
+    "expected_keywords": ["PH", "pass marks", "reduction"]
+  },
+  {
+    "id": "ood_world_cup",
+    "question": "Who won the 2026 FIFA World Cup?",
+    "category": "Out-of-Domain",
+    "document_id": null,
+    "relevant_pages": [],
+    "relevant_sections": [],
+    "evidence_keywords": [],
+    "reference_answer": "I couldn't find any relevant information in the RGUKT documents.",
+    "expected_keywords": ["couldn't find", "don't know", "documents"]
+  },
+  {
+    "id": "ood_france_capital",
+    "question": "What is the capital city of France?",
+    "category": "Out-of-Domain",
+    "document_id": null,
+    "relevant_pages": [],
+    "relevant_sections": [],
+    "evidence_keywords": [],
+    "reference_answer": "I couldn't find any relevant information in the RGUKT documents.",
+    "expected_keywords": ["couldn't find", "don't know"]
+  },
+  {
+    "id": "min_attendance",
+    "question": "What is the minimum attendance requirement for appearing in examinations?",
+    "category": "Numerical",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [3],
+    "relevant_sections": ["RULES AND REGULATIONS OF ATTENDANCE", "RULES AND REGULATIONS"],
+    "evidence_keywords": ["75%", "attendance"],
+    "reference_answer": "A regular programme of study means putting in attendance of not less than 75%.",
+    "expected_keywords": ["75%", "attendance"]
+  },
+  {
+    "id": "attendance_how_much",
+    "question": "How much attendance is required?",
+    "category": "Numerical",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [3],
+    "relevant_sections": ["RULES AND REGULATIONS OF ATTENDANCE", "RULES AND REGULATIONS"],
+    "evidence_keywords": ["75%", "attendance"],
+    "reference_answer": "Students must put in attendance of not less than 75% for a regular programme of study.",
+    "expected_keywords": ["75%", "attendance"]
+  },
+  {
+    "id": "attendance_percentage_maintain",
+    "question": "What percentage attendance must a student maintain?",
+    "category": "Numerical",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [3],
+    "relevant_sections": ["RULES AND REGULATIONS OF ATTENDANCE", "RULES AND REGULATIONS"],
+    "evidence_keywords": ["75%", "attendance"],
+    "reference_answer": "A student must maintain attendance of not less than 75%.",
+    "expected_keywords": ["75%"]
+  },
+  {
+    "id": "attendance_below_required",
+    "question": "What happens if attendance falls below the required level?",
+    "category": "Regulations",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [4],
+    "relevant_sections": ["RULES AND REGULATIONS OF ATTENDANCE", "RULES AND REGULATIONS"],
+    "evidence_keywords": ["readmission", "attendance"],
+    "reference_answer": "Students who do not have the requisite attendance must seek readmission into the same class in the subsequent year after fulfilling attendance requirements.",
+    "expected_keywords": ["readmission", "attendance"]
+  },
+  {
+    "id": "attendance_below_40",
+    "question": "What happens when attendance is below 40%?",
+    "category": "Numerical",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [4],
+    "relevant_sections": ["RULES AND REGULATIONS OF ATTENDANCE", "RULES AND REGULATIONS"],
+    "evidence_keywords": ["40%", "lose"],
+    "reference_answer": "Candidates admitted to the first year of PUC who do not have the minimum 40% attendance will lose their admission and leave the university.",
+    "expected_keywords": ["40%", "lose", "admission"]
+  },
+  {
+    "id": "btech_programs",
+    "question": "What B.Tech programs are offered in the university upon completion of PUC?",
+    "category": "Simple Fact",
+    "document_id": "academic_regulations_hand_book",
+    "relevant_pages": [2],
+    "relevant_sections": ["RULES AND REGULATIONS"],
+    "evidence_keywords": ["Chemical Engineering", "Civil Engineering", "Computer Science"],
+    "reference_answer": "B.Tech programs offered include Chemical Engineering, Civil Engineering, Computer Science and Engineering, and others.",
+    "expected_keywords": ["Chemical", "Civil", "Computer Science"]
+  }
+]
